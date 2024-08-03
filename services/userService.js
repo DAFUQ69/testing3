@@ -1,0 +1,5 @@
+DB_HOST=localhost
+DB_USER=test1
+DB_PASSWORD=12345678
+DB_NAME=crypto_wallet
+PORT=3001
