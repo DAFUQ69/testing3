@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState(null);
+  const [isRegistering, setIsRegistering] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!user ? (
+        <div>
+          {isRegistering ? (
+            <Register setUser={setUser} />
+          ) : (
+            <Login setUser={setUser} />
+          )}
+          <button onClick={() => setIsRegistering(!isRegistering)}>
+            {isRegistering ? 'Already have an account? Login' : 'Register'}
+          </button>
+        </div>
+      ) : (
+        <div>
+          <Dashboard/>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default App;
